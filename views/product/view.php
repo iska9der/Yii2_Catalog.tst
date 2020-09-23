@@ -49,8 +49,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'price',
             'description:ntext',
         ],
-    ]) ?>
+    ]);
+    foreach($model->getEavAttributes()->all() as $attr){
+        echo $model[$attr->name];
+    }
+    ?>
     <div class="d-flex justify-content-center">
         <img src="<?= Url::to(['product/qr?id=' . $model->product_id]) ?>" />
     </div>
+
+
 </div>

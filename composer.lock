@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ade14f6dcda38087bd9a0038339c15c",
+    "content-hash": "5f07923cbcf600da99e48162ca053056",
     "packages": [
         {
             "name": "2amigos/qrcode-library",
@@ -545,6 +545,56 @@
                 "zxing"
             ],
             "time": "2020-04-19T16:18:51+00:00"
+        },
+        {
+            "name": "mirocow/yii2-eav",
+            "version": "v0.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mirocow/yii2-eav.git",
+                "reference": "e4c231cdf7afa5ef21e5fbfececd88ba83b072b9"
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "yiisoft/yii2": ">=2.0.5"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "mirocow\\eav\\": "./src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alien-art",
+                    "email": "alien@alien-art.ru",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Alexey Samoylov",
+                    "email": "alexey.samoylov@gmail.com",
+                    "homepage": "http://yiiblog.ru",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Mirocow",
+                    "email": "mr.mirocow@gmail.com",
+                    "homepage": "http://mirocow.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "EAV for Yii2",
+            "keywords": [
+                "attribute",
+                "cck",
+                "eav",
+                "fields",
+                "yii2"
+            ],
+            "time": "2017-01-07T19:07:59+00:00"
         },
         {
             "name": "npm-asset/bootstrap",

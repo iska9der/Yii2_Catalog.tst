@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use app\models\Category;
+use app\models\Product;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -11,7 +12,6 @@ use yii\bootstrap4\ActiveForm;
 ?>
 
 <div class="product-form">
-
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
@@ -27,8 +27,20 @@ use yii\bootstrap4\ActiveForm;
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'qrcode')->textInput() ?>
+    <?php
+    foreach($model->getEavAttributes()->all() as $attr) {
+        echo $form->field($model, $attr->name, ['class' => '\mirocow\eav\widgets\ActiveField'])->eavInput();
+    }
 
-
+    $category = $model->category_id;
+    $constructorEAV = \mirocow\eav\admin\widgets\Fields::widget([
+        'model' => $model,
+        'categoryId' => $category,
+        'entityName' => 'Продукт',
+        'entityModel' => 'app\models\Product',
+    ]);
+    echo $constructorEAV;
+    ?>
 
 
 

@@ -18,6 +18,7 @@ use Da\QrCode\QrCode;
 class ProductController extends Controller
 {
     public $qr;
+    public $model;
     
     /**
      * {@inheritdoc}
@@ -97,6 +98,7 @@ class ProductController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->picFile = UploadedFile::getInstance($model, 'picFile');
