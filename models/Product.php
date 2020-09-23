@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 
+
 /**
  * This is the model class for table "{{%catalog.product}}".
  *
@@ -16,6 +17,7 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    use \mirocow\eav\EavTrait;
 
     public $randomStr;
     public $picFile;
@@ -61,6 +63,18 @@ class Product extends \yii\db\ActiveRecord
         ];
     }
 
+    public function behaviors()
+    {
+        return [
+            'eav' => [
+                'class' => \mirocow\eav\EavBehavior::className(),
+                // это модель для таблицы object_attribute_value
+                'valueClass' => \mirocow\eav\models\EavAttributeValue::className(),
+            ]
+        ];
+    }
+
+
     /**
      * {@inheritdoc}
      * @return \app\models\query\ProductQuery the active query used by this AR class.
@@ -70,4 +84,17 @@ class Product extends \yii\db\ActiveRecord
         return new \app\models\query\ProductQuery(get_called_class());
     }
 
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEavAttributes()
+    {
+        return \mirocow\eav\models\EavAttribute::find()
+            ->joinWith('entity')
+            ->where([
+                'categoryId' => $this->category_id,
+                'entityModel' => $this::className()
+            ]);
+    }
 }
