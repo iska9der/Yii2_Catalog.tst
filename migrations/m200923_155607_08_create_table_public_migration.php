@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m200916_154224_create_table_category extends Migration
+class m200923_155607_08_create_table_public_migration extends Migration
 {
     public function up()
     {
@@ -12,11 +12,10 @@ class m200916_154224_create_table_category extends Migration
         }
 
         $this->createTable(
-            '{{%catalog.category}}',
+            '{{%public.migration}}',
             [
-                'category_id' => $this->primaryKey(),
-                'pic' => $this->text(),
-                'name' => $this->string(100)->notNull(),
+                'version' => $this->string(180)->notNull()->append('PRIMARY KEY'),
+                'apply_time' => $this->integer(),
             ],
             $tableOptions
         );
@@ -24,6 +23,6 @@ class m200916_154224_create_table_category extends Migration
 
     public function down()
     {
-        $this->dropTable('{{%catalog.category}}');
+        $this->dropTable('{{%public.migration}}');
     }
 }

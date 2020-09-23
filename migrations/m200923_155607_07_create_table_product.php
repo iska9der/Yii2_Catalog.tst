@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m200916_154244_create_table_product extends Migration
+class m200923_155607_07_create_table_product extends Migration
 {
     public function up()
     {
@@ -16,7 +16,7 @@ class m200916_154244_create_table_product extends Migration
             [
                 'product_id' => $this->primaryKey(),
                 'name' => $this->string(100)->notNull(),
-                'pic' => $this->text()->notNull(),
+                'pic' => $this->text(),
                 'description' => $this->text()->notNull(),
                 'qrcode' => $this->text(),
                 'category_id' => $this->integer(),
@@ -27,9 +27,9 @@ class m200916_154244_create_table_product extends Migration
 
         $this->addForeignKey(
             'product_category_id_fkey',
-            '{{%catalog.product}}',
+            '{{%product}}',
             ['category_id'],
-            '{{%catalog.category}}',
+            '{{%category}}',
             ['category_id'],
             'CASCADE',
             'NO ACTION'
@@ -38,6 +38,6 @@ class m200916_154244_create_table_product extends Migration
 
     public function down()
     {
-        $this->dropTable('{{%catalog.product}}');
+        $this->dropTable('{{%product}}');
     }
 }
